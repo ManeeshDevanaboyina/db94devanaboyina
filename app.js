@@ -31,7 +31,7 @@ async function recreateDB() {
     if (err) return console.error(err);
     console.log("Second object saved")
   });
-  let instance3 = new mask({ color: "Red devil", price: 50, size: "s" });
+  let instance3 = new mask({ color: "Red devil", price: 50, size: "S" });
   instance3.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Third object saved")
