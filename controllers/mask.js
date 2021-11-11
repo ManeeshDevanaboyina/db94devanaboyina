@@ -1,8 +1,19 @@
 var mask = require('../models/mask');
-// List of all masks
-exports.mask_list = function(req, res) {
-res.send('NOT IMPLEMENTED: mask list');
+
+
+// List of all mask
+exports.mask_list = async function (req, res) {
+    try {
+        themask = await mask.find();
+        res.send(themask);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
+
+
 // for a specific mask.
 exports.mask_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: mask detail: ' + req.params.id);
