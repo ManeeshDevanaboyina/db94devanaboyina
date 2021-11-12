@@ -13,6 +13,7 @@ router.post('/masks', mask_controller.mask_create_post);
 router.delete('/masks/:id', mask_controller.mask_delete);
 // PUT request to update mask.
 router.put('/masks/:id', mask_controller.mask_update_put);
+
 // GET request for one mask.
 router.get('/masks/:id', mask_controller.mask_detail);
 // GET request for list of all mask items.
