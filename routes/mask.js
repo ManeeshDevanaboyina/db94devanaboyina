@@ -8,7 +8,10 @@ module.exports = router;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('mask', { title: 'Search Results' });
+  res.render('mask', { title: 'Search Results masks' });
 });
+
+/* GET detail Mask page */
+router.get('/detail', mask_controlers.mask_view_one_Page);
 
 module.exports = router;

@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let maskid = toShow._id 
+  - let color = toShow.color 
+  - let price = toShow.price
+  - let size = toShow.size
+  div 
+    div.row 
+      div(class='maskAttr mr-3') mask ID is: 
+      div #{maskid} 
+    div.row 
+      div(class='maskAttr mr-3') mask color is: 
+      div #{color} 
+    div.row 
+      div(class='maskAttr mr-3') mask size is: 
+      div #{size} 
+    div.row 
+      div(class='maskAttr mr-3') mask price is: 
+      div #{price}

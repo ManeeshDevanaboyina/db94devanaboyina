@@ -63,10 +63,19 @@ exports.mask_detail = async function(req, res) {
     } 
 }; 
 
-// Handle mask delete form on DELETE.
-exports.mask_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: mask delete DELETE ' + req.params.id);
-};
+// Handle Mask delete on DELETE.
+exports.mask_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await mask.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
 //Handle mask update form on PUT. 
 exports.mask_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
@@ -87,3 +96,17 @@ ${JSON.stringify(req.body)}`)
 failed`); 
     } 
 }; 
+
+// Handle a show one view with id specified by query
+exports.mask_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await mask.findById( req.query.id) 
+        res.render('maskdetail',  
+{ title: 'mask Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
