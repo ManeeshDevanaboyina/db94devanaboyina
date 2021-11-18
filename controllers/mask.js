@@ -125,3 +125,17 @@ exports.mask_create_post = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// Handle building the view for updating a mask. 
+// query provides the id 
+exports.mask_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await mask.findById(req.query.id) 
+        res.render('maskupdate', { title: 'mask Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
