@@ -14,4 +14,7 @@ router.get('/', function(req, res, next) {
 /* GET detail Mask page */
 router.get('/detail', mask_controlers.mask_view_one_Page);
 
+/* GET create mask page */
+router.get('/create', mask_controlers.mask_create_Page);
+
 module.exports = router;

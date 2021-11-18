@@ -30,26 +30,6 @@ exports.mask_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: mask detail: ' + req.params.id);
 };
 
-// Handle mask create on POST. 
-exports.mask_create_post = async function (req, res) {
-    console.log(req.body)
-    let document = new mask();
-    // We are looking for a body, since POST does not have query parameters.
-    // Even though bodies can be in many different formats, we will be picky
-    // and require that it be a json object
-    // {"color":"Red", "price":30, "size":"XL"}
-    document.color = req.body.color; 
-    document.price = req.body.price; 
-    document.size = req.body.size;
-    try {
-        let result = await document.save();
-        res.send(result);
-    }
-    catch (err) {
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-    }
-};
 
 // for a specific mask. 
 exports.mask_detail = async function(req, res) { 
@@ -109,4 +89,39 @@ exports.mask_view_one_Page = async function(req, res) {
         res.status(500) 
         res.send(`{'error': '${err}'}`); 
     } 
+};
+
+// Handle building the view for creating a mask.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.mask_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('maskcreate', { title: 'mask Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+    // Handle mask create on POST. 
+exports.mask_create_post = async function (req, res) {
+    console.log(req.body)
+    let document = new mask();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"color":"Red", "price":30, "size":"XL"}
+    document.color = req.body.color; 
+    document.price = req.body.price; 
+    document.size = req.body.size;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
