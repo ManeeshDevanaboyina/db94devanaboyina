@@ -20,7 +20,8 @@ var resourceRouter = require('./routes/resource');
 
 // We can seed the collection if needed on server start
 async function recreateDB() {
-  // Delete everything await Costume.deleteMany();
+  // Delete everything 
+  await mask.deleteMany();
   let instance1 = new mask({ color: "Black", price: 20, size: "L" });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);

@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let maskid = toShow._id 
+    - let color = toShow.color 
+    - let price = toShow.price
+    - let size = toShow.size 
+    - let actionid = "/resource/masks/" + maskid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='maskAttr mr-3') mask ID is: 
+        div(class='style masks') #{maskid} 
+      div.row 
+        div(class='maskAttr mr-3') mask color is: 
+        div(class='style masks') #{color} 
+      div.row 
+        div(class='maskAttr mr-3') mask Size is: 
+        div(class='style masks') #{size} 
+      div.row 
+        div(class='maskAttr mr-3') mask Price is: 
+        div(class='style masks') #{price} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the mask collection 
+      window.location.href='/masks' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/masks' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
+ 

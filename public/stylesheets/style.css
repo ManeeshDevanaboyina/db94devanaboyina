@@ -11,3 +11,18 @@ a {
   background-color: aquamarine;
   width: 120px;
   }
+
+  .masks {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight:normal;
+  
+  }
+  .style{
+    color:red;
+    background-color:yellow;
+    color: blue;
+  }

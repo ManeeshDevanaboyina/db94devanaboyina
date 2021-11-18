@@ -19,4 +19,9 @@ router.get('/create', mask_controlers.mask_create_Page);
 
 /* GET create update page */ 
 router.get('/update', mask_controlers.mask_update_Page); 
+
+
+/* GET create mask page */ 
+router.get('/delete', mask_controlers.mask_delete_Page); 
+
 module.exports = router;
