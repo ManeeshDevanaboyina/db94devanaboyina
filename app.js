@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+
 const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
