@@ -7,9 +7,11 @@ router.get('/', mask_controlers.mask_view_all_Page );
 module.exports = router;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('mask', { title: 'Search Results masks' });
-});
+//router.get('/', function(req, res, next) {
+  //res.render('mask', { title: 'Search Results masks' });
+//});
+
+router.get('/',mask_controlers.mask_view_all_Page);
 
 /* GET detail Mask page */
 router.get('/detail', mask_controlers.mask_view_one_Page);
