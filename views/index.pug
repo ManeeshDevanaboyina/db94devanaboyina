@@ -1,18 +1,12 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}. Working on pug templates to dynamically generate web pages on the server side.
-  button(type="button", class="btn btn-success" onclick="update()") Press Me for the contents 
-  p
-  div(id="target") Display
-
-  script.
-    var client_count=0;
-    function update(){
-      client_count+=1;
-
-      document.getElementById("target").innerHTML="Value Now "+client_count  ;
-    }
-  p 
-  a(href="mask") Link to the page
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/mask") Take me to mask 
+    br 
+    a(href="/logout") Logout
